@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 13:22:27 by kali              #+#    #+#             */
-/*   Updated: 2024/08/28 16:17:13 by kali             ###   ########.fr       */
+/*   Created: 2024/09/04 08:41:05 by adprzyby          #+#    #+#             */
+/*   Updated: 2024/09/04 08:46:15 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ int main(int argc, char **argv)
     while (i < argc)
     {
         print_str(argv[i]);
-        std::cout << std::endl;
+		std::cout << ' ';
         i++;
     }
+    std::cout << std::endl;
     return (0);
 }
