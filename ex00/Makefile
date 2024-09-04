@@ -5,22 +5,21 @@ SRC := megaphone.cpp
 OBJ := $(SRC:.cpp=.o)
 
 all: $(NAME)
-	@echo "Compiled successfully"
-
-$(OBJ): $(SRC)
-	@echo "Compiling object files..."
-	@$(CC) $(CCFLAGS) -c $(SRC) -o $(OBJ)
 
 $(NAME): $(OBJ)
-	@echo "Compiling..."
-	@$(CC) $(CCFLAGS) -c $(SRC) -o $(NAME)
+	@$(CC) $(CCFLAGS) $^ -o $@
+	@echo "Compiled successfully"
+
+%.o: %.cpp
+	@echo "Compiling ..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "Cleaning object files"
+	@echo "Cleaning the object files"
 	@rm -rf $(OBJ)
 
 fclean:
-	@echo "Cleaning whole program"
+	@echo "Cleaning the whole program"
 	@rm -rf $(OBJ) $(NAME)
 
 re: fclean all
