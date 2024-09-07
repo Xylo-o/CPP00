@@ -6,11 +6,11 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:35:58 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/04 12:20:37 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/07 09:54:46 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "PhoneBook.hpp"
 
 class PhoneBook
 {
@@ -20,11 +20,11 @@ class PhoneBook
 
 void	addContact(void)
 {
-	int number;
+	std::string number;
 	std::string name;
 	std::string address;
 	
-	std::cin >> number;
+	std::getline(std::cin, number);
 	std::getline(std::cin, name);
 	std::getline(std::cin, address);
 }
