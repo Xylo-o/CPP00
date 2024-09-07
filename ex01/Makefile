@@ -1,6 +1,6 @@
 NAME := phonebook
 CC := c++
-CCFLAGS := -Werror -Wextra -Wall
+CCFLAGS := -Werror -Wextra -Wall -std=c++98
 
 SRCS := Main.cpp Contact.cpp PhoneBook.cpp
 
