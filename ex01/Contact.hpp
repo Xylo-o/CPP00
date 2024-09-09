@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:50:34 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 13:44:20 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:44:43 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ public:
 	}
 	std::string getNickname() {
 		return (nickname);
+	}
+	std::string getPhoneNumber() {
+		return (phoneNumber);
+	}
+	std::string getSecret() {
+		return (secret);
 	}
 private:
 	std::string firstName;

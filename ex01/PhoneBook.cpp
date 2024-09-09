@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:35:58 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 14:56:19 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:47:26 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ std::string formatField(const std::string &text) {
 
 void PhoneBook::searchContact(PhoneBook &phoneBook) {
     int i;
+	std::string index;
     std::cout << "*===============================================*" << std::endl;
 	std::cout << std::right << std::setw(10) << "Index" << "|" 
         << std::setw(10) << "First name" << "|" 
@@ -59,6 +60,40 @@ void PhoneBook::searchContact(PhoneBook &phoneBook) {
         << std::setw(10) << formatField(phoneBook.contacts[i].getFirstName()) << "|" 
         << std::setw(10) << formatField(phoneBook.contacts[i].getLastName()) << "|" 
         << std::setw(10) << formatField(phoneBook.contacts[i].getNickname()) << std::endl;
+    }
+    std::cout << "*===============================================*" << std::endl;
+	while (true) {
+		std::cin >> index;
+		std::cout << "Enter the index of the contact to view: " << std::endl;
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Invalid input. Please enter a numeric index." << std::endl;
+		}
+		else {
+			int idx = std::stoi(index);
+			if (idx > 0 && idx <= 8) {
+				break;
+			}
+			else {
+				std::cout << "Index out of range. Please enter a valid index." << std::endl;
+			}
+		}
+	}
+    std::cout << "*===============================================*" << std::endl;
+	std::cout << std::right << std::setw(10) << "Index" << "|" 
+        << std::setw(10) << "First name" << "|" 
+        << std::setw(10) << "Last name" << "|"
+		<< std::setw(10) << "Nickname" << "|"
+		<< std::setw(10) << "Phone number" << "|"
+		<< std::setw(10) << "*Dark secret*" << std::endl;
+    for (i = 0; i < phoneBook.index ; i++) {
+        std::cout << std::right << std::setw(10) << (i + 1) << "|" 
+        << std::setw(10) << formatField(phoneBook.contacts[i].getFirstName()) << "|" 
+        << std::setw(10) << formatField(phoneBook.contacts[i].getLastName()) << "|"
+        << std::setw(10) << formatField(phoneBook.contacts[i].getNickname()) << "|"
+        << std::setw(10) << formatField(phoneBook.contacts[i].getPhoneNumber()) << "|"
+        << std::setw(10) << formatField(phoneBook.contacts[i].getSecret()) << std::endl;
     }
     std::cout << "*===============================================*" << std::endl;
 }
