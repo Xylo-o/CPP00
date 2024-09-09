@@ -6,17 +6,16 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:58:20 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/07 11:39:34 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:38:01 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-int checkIfCommand(std::string word, PhoneBook phonebook)
-{
+int checkIfCommand(std::string word, PhoneBook &phonebook) {
 	if (word == "ADD")
 	{
-		phonebook.addContact();
+		phonebook.addContact(phonebook);
 		return (1);
 	}
 	else if (word == "SEARCH")
@@ -33,8 +32,7 @@ int checkIfCommand(std::string word, PhoneBook phonebook)
 		return (-1);
 }
 
-int main(void)
-{
+int main(void) {
 	PhoneBook phonebook;
 	std::string input;
 	int isCommand = 0;
@@ -51,7 +49,6 @@ int main(void)
 		if (isCommand == 0)
 			return (0);
 	}
-	
 
 	return (0);
 }
