@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:58:20 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 11:38:01 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:07:15 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int checkIfCommand(std::string word, PhoneBook &phonebook) {
 	}
 	else if (word == "SEARCH")
 	{
-		phonebook.searchContact();
+		phonebook.searchContact(phonebook);
 		return (1);
 	}
 	else if (word == "EXIT")

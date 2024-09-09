@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 09:40:34 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 11:38:51 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:06:56 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 
 class PhoneBook {
 	public:
+		static int index;
 		Contact contacts [8];
 		void addContact(PhoneBook &phonebook);
-		void searchContact(void);
+		void searchContact(PhoneBook &phonebook);
 		void exitProgram(void);
 		
 	private:

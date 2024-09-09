@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:50:34 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 11:39:50 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:44:20 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 class Contact {
 public:
-	int index;
 	void setFirstName(std:: string firstName) {
 		this->firstName = firstName;
 	}
@@ -37,8 +36,8 @@ public:
 	std::string getLastName() {
 		return (lastName);
 	}
-	std::string getPhoneNumber() {
-		return (phoneNumber);
+	std::string getNickname() {
+		return (nickname);
 	}
 private:
 	std::string firstName;
