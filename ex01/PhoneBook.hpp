@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 09:40:34 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 12:06:56 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:50:16 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include "Contact.hpp"
 #include <vector>
 #include <iostream>
+#include <iomanip>
+#include <cctype>
+#include <algorithm>
 #include <string>
 
 class PhoneBook {

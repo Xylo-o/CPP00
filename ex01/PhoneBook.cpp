@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:35:58 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 13:54:06 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:56:19 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,31 @@ void PhoneBook::addContact(PhoneBook &phoneBook) {
 	std::cout << "New contact successfully added!" << std::endl;
 }
 
-void PhoneBook::searchContact(PhoneBook &phoneBook) {
-	int i;
-	std::cout << "*====================================================================*" << std::endl;
-	for (i = 0; i < phoneBook.index ; i++) {
-		std::cout << (i + 1) << "|" 
-		<< phoneBook.contacts[i].getFirstName() << "|" 
-		<< phoneBook.contacts[i].getLastName() << "|" 
-		<< phoneBook.contacts[i].getNickname() << std::endl;
-	}
-	std::cout << "*====================================================================*" << std::endl;
-	
-	// i = 0;
-	// while () {
-		
-	// }
+std::string formatField(const std::string &text) {
+    if (text.length() > 10) {
+        return text.substr(0, 9) + ".";
+    }
+	else {
+        return text;
+    }
 }
+
+void PhoneBook::searchContact(PhoneBook &phoneBook) {
+    int i;
+    std::cout << "*===============================================*" << std::endl;
+	std::cout << std::right << std::setw(10) << "Index" << "|" 
+        << std::setw(10) << "First name" << "|" 
+        << std::setw(10) << "Last name" << "|" 
+        << std::setw(10) << "Nickname" << std::endl;
+    for (i = 0; i < phoneBook.index ; i++) {
+        std::cout << std::right << std::setw(10) << (i + 1) << "|" 
+        << std::setw(10) << formatField(phoneBook.contacts[i].getFirstName()) << "|" 
+        << std::setw(10) << formatField(phoneBook.contacts[i].getLastName()) << "|" 
+        << std::setw(10) << formatField(phoneBook.contacts[i].getNickname()) << std::endl;
+    }
+    std::cout << "*===============================================*" << std::endl;
+}
+
 void PhoneBook::exitProgram(void) {
 	std::cout << "Exiting..." << std::endl;
 }
