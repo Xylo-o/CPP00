@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:35:58 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 15:47:26 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/10 08:38:05 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,19 @@ std::string formatField(const std::string &text) {
     if (text.length() > 10) {
         return text.substr(0, 9) + ".";
     }
-	else {
+	else
         return text;
-    }
+}
+
+bool isNumber(std::string str) {
+	int i = 0;
+	while (str[i] != '\0') {
+		if (str[i] >= '1' && str[i] <= '9')
+			i++;
+		else
+			return (false);
+	}
+	return (true);
 }
 
 void PhoneBook::searchContact(PhoneBook &phoneBook) {
@@ -62,13 +72,12 @@ void PhoneBook::searchContact(PhoneBook &phoneBook) {
         << std::setw(10) << formatField(phoneBook.contacts[i].getNickname()) << std::endl;
     }
     std::cout << "*===============================================*" << std::endl;
-	while (true) {
-		std::cin >> index;
+	while (index.empty()) {
 		std::cout << "Enter the index of the contact to view: " << std::endl;
-		if (std::cin.fail()) {
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cin >> index;
+		if (!isNumber(index)) {
 			std::cout << "Invalid input. Please enter a numeric index." << std::endl;
+			continue;
 		}
 		else {
 			int idx = std::stoi(index);
@@ -97,6 +106,7 @@ void PhoneBook::searchContact(PhoneBook &phoneBook) {
     }
     std::cout << "*===============================================*" << std::endl;
 }
+
 
 void PhoneBook::exitProgram(void) {
 	std::cout << "Exiting..." << std::endl;
