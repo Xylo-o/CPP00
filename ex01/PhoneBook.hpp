@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 09:40:34 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/09 14:50:16 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/16 11:37:15 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ class PhoneBook {
 		static int index;
 		Contact contacts [8];
 		void addContact(PhoneBook &phonebook);
-		void searchContact(PhoneBook &phonebook);
+		// int searchContact(PhoneBook &phonebook);
 		void exitProgram(void);
-		
-	private:
+		bool isNumber(std::string str);
+		void displayPrompt();
+		void displaySearchTable(PhoneBook &phoneBook);
+		void displayContact(PhoneBook &phoneBook, int idx);
 		std::string getInput(const std::string &prompt);
 };
 

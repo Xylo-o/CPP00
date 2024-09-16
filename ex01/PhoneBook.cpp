@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:35:58 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/11 08:57:41 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/16 11:53:25 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ std::string formatField(const std::string &text) {
         return text;
 }
 
-bool isNumber(std::string str) {
+bool PhoneBook::isNumber(std::string str) {
 	int i = 0;
 	while (str[i] != '\0') {
 		if (str[i] >= '1' && str[i] <= '9')
@@ -57,14 +57,20 @@ bool isNumber(std::string str) {
 	return (true);
 }
 
-void displaySearchTable(PhoneBook &phoneBook) {
+void PhoneBook::displayPrompt() {
+	std::cout << "ADD - save a new contact\n" 
+			  << "SEARCH - display a specific contact\n" 
+			  << "EXIT - exit the program and delete all contacts" << std::endl;
+}
+
+void PhoneBook::displaySearchTable(PhoneBook &phoneBook) {
 	std::cout << "*===============================================*" << std::endl;
 	std::cout << std::right << std::setw(10) << "Index" << "|" 
         << std::setw(10) << "First name" << "|" 
         << std::setw(10) << "Last name" << "|" 
         << std::setw(10) << "Nickname" << std::endl;
-    for (int i = 0; i < phoneBook.index ; i++) {
-        std::cout << std::right << std::setw(10) << (i + 1) << "|" 
+    for (int i = 1; i <= phoneBook.index ; i++) {
+        std::cout << std::right << std::setw(10) << i << "|" 
         << std::setw(10) << formatField(phoneBook.contacts[i].getFirstName()) << "|" 
         << std::setw(10) << formatField(phoneBook.contacts[i].getLastName()) << "|" 
         << std::setw(10) << formatField(phoneBook.contacts[i].getNickname()) << std::endl;
@@ -72,47 +78,12 @@ void displaySearchTable(PhoneBook &phoneBook) {
     std::cout << "*===============================================*" << std::endl;
 }
 
-void displayContact(PhoneBook &phoneBook) {
-	std::cout << "*===============================================*" << std::endl;
-	std::cout << std::right << std::setw(10) << "Index" << "|" 
-        << std::setw(10) << "First name" << "|" 
-        << std::setw(10) << "Last name" << "|"
-		<< std::setw(10) << "Nickname" << "|"
-		<< std::setw(10) << "Phone number" << "|"
-		<< std::setw(10) << "*Dark secret*" << std::endl;
-    for (int i = 0; i < phoneBook.index ; i++) {
-        std::cout << std::right << std::setw(10) << (i + 1) << "|" 
-        << std::setw(10) << formatField(phoneBook.contacts[i].getFirstName()) << "|" 
-        << std::setw(10) << formatField(phoneBook.contacts[i].getLastName()) << "|"
-        << std::setw(10) << formatField(phoneBook.contacts[i].getNickname()) << "|"
-        << std::setw(10) << formatField(phoneBook.contacts[i].getPhoneNumber()) << "|"
-        << std::setw(10) << formatField(phoneBook.contacts[i].getSecret()) << std::endl;
-    }
-    std::cout << "*===============================================*" << std::endl;
-}
-
-void PhoneBook::searchContact(PhoneBook &phoneBook) {
-    int i;
-	std::string index;
-	displaySearchTable(phoneBook);
-	while (index.empty()) {
-		std::cout << "Enter the index of the contact to view: " << std::endl;
-		std::cin >> index;
-		if (!isNumber(index)) {
-			std::cout << "Invalid input. Please enter a numeric index." << std::endl;
-			continue;
-		}
-		else {
-			int idx = std::stoi(index);
-			if (idx > 0 && idx <= 8) {
-				break;
-			}
-			else {
-				std::cout << "Index out of range. Please enter a valid index." << std::endl;
-			}
-		}
-	}
-	displayContact(phoneBook);
+void PhoneBook::displayContact(PhoneBook &phoneBook, int idx) {
+    std::cout << "First name: " << phoneBook.contacts[idx].getFirstName() << std::endl; 
+    std::cout << "Last name: " << phoneBook.contacts[idx].getLastName() << std::endl;
+    std::cout << "Nickname: " << phoneBook.contacts[idx].getNickname() << std::endl;
+    std::cout << "Phone number: " << phoneBook.contacts[idx].getPhoneNumber() << std::endl;
+    std::cout << "*Dark secret*: " << phoneBook.contacts[idx].getSecret() << std::endl;
 }
 
 void PhoneBook::exitProgram(void) {
