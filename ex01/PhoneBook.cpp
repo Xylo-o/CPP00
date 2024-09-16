@@ -6,13 +6,13 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:35:58 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/16 11:53:25 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:30:59 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-int PhoneBook::index = 0;
+int PhoneBook::index = 1;
 
 std::string PhoneBook::getInput(const std::string &prompt) {
 	std::string input;
@@ -33,8 +33,16 @@ void PhoneBook::addContact(PhoneBook &phoneBook) {
 	newContact.setNickname(getInput("Nickname: "));
 	newContact.setPhoneNumber(getInput("Phone number: "));
 	newContact.setSecret(getInput("*Your darkest secret*: "));
-	phoneBook.contacts[phoneBook.index] = newContact;
-	phoneBook.index++;
+	if (phoneBook.index == 9) {
+		for (int i = 0; i < 8; i++) {
+			phoneBook.contacts[i] = phoneBook.contacts[i + 1];
+		}
+		phoneBook.contacts[7] = newContact;
+	}
+	else {
+		phoneBook.contacts[phoneBook.index - 1] = newContact;
+		phoneBook.index++;
+	}
 	std::cout << "New contact successfully added!" << std::endl;
 }
 
@@ -69,11 +77,11 @@ void PhoneBook::displaySearchTable(PhoneBook &phoneBook) {
         << std::setw(10) << "First name" << "|" 
         << std::setw(10) << "Last name" << "|" 
         << std::setw(10) << "Nickname" << std::endl;
-    for (int i = 1; i <= phoneBook.index ; i++) {
+    for (int i = 1; i < phoneBook.index ; i++) {
         std::cout << std::right << std::setw(10) << i << "|" 
-        << std::setw(10) << formatField(phoneBook.contacts[i].getFirstName()) << "|" 
-        << std::setw(10) << formatField(phoneBook.contacts[i].getLastName()) << "|" 
-        << std::setw(10) << formatField(phoneBook.contacts[i].getNickname()) << std::endl;
+        << std::setw(10) << formatField(phoneBook.contacts[i - 1].getFirstName()) << "|" 
+        << std::setw(10) << formatField(phoneBook.contacts[i - 1].getLastName()) << "|" 
+        << std::setw(10) << formatField(phoneBook.contacts[i - 1].getNickname()) << std::endl;
     }
     std::cout << "*===============================================*" << std::endl;
 }
@@ -84,6 +92,7 @@ void PhoneBook::displayContact(PhoneBook &phoneBook, int idx) {
     std::cout << "Nickname: " << phoneBook.contacts[idx].getNickname() << std::endl;
     std::cout << "Phone number: " << phoneBook.contacts[idx].getPhoneNumber() << std::endl;
     std::cout << "*Dark secret*: " << phoneBook.contacts[idx].getSecret() << std::endl;
+	std::cout << std::endl;
 }
 
 void PhoneBook::exitProgram(void) {

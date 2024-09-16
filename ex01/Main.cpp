@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:58:20 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/16 12:07:41 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:12:20 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ int main(void) {
 		}
 		else if (input == "SEARCH") {
 			phonebook.displaySearchTable(phonebook);
-			std::cout << "Enter the index of the contact to view: " << std::endl;
+			std::cout << "Enter an index of a contact to view or EXIT to go back: " << std::endl;
 			std::getline(std::cin, input);
 			if (input == "EXIT") {
-				return (1);
+				std::cout << std::endl;
+				continue ;
 			}
 			while (!phonebook.isNumber(input) || input.empty()) {
-				std::cout << "Invalid input. Please enter a numeric index or EXIT to go back" << std::endl;
+				std::cout << "Invalid input. Please enter a numeric index or EXIT to go back: " << std::endl;
 				std::getline(std::cin, input);
 				if (input == "EXIT") {
+					std::cout << std::endl;
 					break ;
 				}
 			}
@@ -41,7 +43,7 @@ int main(void) {
 				int idx = std::stoi(input);
 				if ((idx > 0 && idx <= 8) && (idx <= phonebook.index)) {
 					phonebook.displayContact(phonebook, idx);
-					break;
+					continue;
 				}
 				else {
 					std::cout << "Index out of range. Please enter a valid index.\n" << std::endl;
