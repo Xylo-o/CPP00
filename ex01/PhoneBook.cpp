@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:35:58 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/16 15:30:59 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:01:37 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void PhoneBook::addContact(PhoneBook &phoneBook) {
 	newContact.setPhoneNumber(getInput("Phone number: "));
 	newContact.setSecret(getInput("*Your darkest secret*: "));
 	if (phoneBook.index == 9) {
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 7; i++) {
 			phoneBook.contacts[i] = phoneBook.contacts[i + 1];
 		}
 		phoneBook.contacts[7] = newContact;
@@ -87,11 +87,11 @@ void PhoneBook::displaySearchTable(PhoneBook &phoneBook) {
 }
 
 void PhoneBook::displayContact(PhoneBook &phoneBook, int idx) {
-    std::cout << "First name: " << phoneBook.contacts[idx].getFirstName() << std::endl; 
-    std::cout << "Last name: " << phoneBook.contacts[idx].getLastName() << std::endl;
-    std::cout << "Nickname: " << phoneBook.contacts[idx].getNickname() << std::endl;
-    std::cout << "Phone number: " << phoneBook.contacts[idx].getPhoneNumber() << std::endl;
-    std::cout << "*Dark secret*: " << phoneBook.contacts[idx].getSecret() << std::endl;
+    std::cout << "First name: " << phoneBook.contacts[idx -1].getFirstName() << std::endl; 
+    std::cout << "Last name: " << phoneBook.contacts[idx - 1].getLastName() << std::endl;
+    std::cout << "Nickname: " << phoneBook.contacts[idx - 1].getNickname() << std::endl;
+    std::cout << "Phone number: " << phoneBook.contacts[idx - 1].getPhoneNumber() << std::endl;
+    std::cout << "*Dark secret*: " << phoneBook.contacts[idx - 1].getSecret() << std::endl;
 	std::cout << std::endl;
 }
 
