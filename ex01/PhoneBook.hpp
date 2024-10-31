@@ -6,7 +6,7 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 09:40:34 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/16 11:37:15 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:46:50 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <cctype>
 #include <algorithm>
 #include <string>
+#include <csignal>
 
 class PhoneBook {
 	public:

@@ -6,13 +6,21 @@
 /*   By: adprzyby <adprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:58:20 by adprzyby          #+#    #+#             */
-/*   Updated: 2024/09/16 15:12:20 by adprzyby         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:49:47 by adprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+void signalHandler(int signal) {
+	if (signal == SIGINT) {
+		std::cout << "\nExiting..." << std::endl;
+		exit(0);
+	}
+}
+
 int main(void) {
+	std::signal(SIGINT, signalHandler);
 	PhoneBook phonebook;
 	std::string input;
 	std::cout << "Welcome to myPhoneBook! Please enter one of the following commands: " << std::endl;
@@ -20,6 +28,10 @@ int main(void) {
 	{
 		phonebook.displayPrompt();
 		std::getline(std::cin, input);
+		if (std::cin.eof()) {
+			std::cout << "\nExiting..." << std::endl;
+			break;
+		}
 		if (input == "ADD") {
 			phonebook.addContact(phonebook);
 		}
